@@ -3,7 +3,7 @@ using Desafio.Core.Dominio.Entidades;
 
 namespace Desafio.Database
 {
-    internal class DesafioContext : DbContext
+    public class DesafioContext : DbContext
     {
         public virtual DbSet<Dispositivo> Dispositivos { get; set; }
         public virtual DbSet<Evento> Eventos { get; set; }

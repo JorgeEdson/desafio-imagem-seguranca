@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositorios\Base\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Desafio.Core\Desafio.Core.csproj" />
   </ItemGroup>
 </Project>
