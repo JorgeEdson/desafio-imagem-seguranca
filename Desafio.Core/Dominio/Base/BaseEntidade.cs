@@ -1,4 +1,5 @@
-﻿namespace Desafio.Core.Dominio.Base
+﻿using System;
+namespace Desafio.Core.Dominio.Base
 {
     public abstract class BaseEntidade
     {
