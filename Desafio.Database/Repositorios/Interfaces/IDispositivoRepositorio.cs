@@ -1,5 +1,5 @@
 ﻿using Desafio.Database.Repositorios.Interfaces.Base;
-using Desafio.Core.Dominio.Entidades;
+using Desafio.Database.Dominio;
 
 namespace Desafio.Database.Repositorios.Interfaces
 {

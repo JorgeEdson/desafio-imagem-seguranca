@@ -1,4 +1,4 @@
-﻿using Desafio.Core.Dominio.Entidades;
+﻿using Desafio.Database.Dominio;
 using Desafio.Database.Repositorios.Interfaces.Base;
 
 namespace Desafio.Database.Repositorios.Interfaces

@@ -1,5 +1,6 @@
-﻿using Desafio.Core.Dominio.Entidades;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace Desafio.WCF
 {    
@@ -7,10 +8,10 @@ namespace Desafio.WCF
     public interface IDesafioService
     {
         [OperationContract]
-        string AbrirFechar(Evento evento);
+        string AbrirFechar(int endereco);
         [OperationContract]
-        string ManterAberto(Evento evento);
+        string ManterAberto(int endereco);
         [OperationContract]
-        string Fechar(Evento evento);
+        string Fechar(int endereco);
     }
 }

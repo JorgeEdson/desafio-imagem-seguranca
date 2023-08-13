@@ -1,4 +1,4 @@
-﻿using Desafio.Core.Dominio.Entidades;
+﻿using Desafio.Database.Dominio;
 using Desafio.Database.Repositorios.Base;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace Desafio.Database.Repositorios
 {
     public class EventoRepositorio : BaseRepositorio<Evento>
     {
-        public EventoRepositorio(DesafioContext context) : base(context)
+        public EventoRepositorio(DesafioContext2 context) : base(context)
         {
                 
         }

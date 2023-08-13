@@ -2,17 +2,18 @@
 using Desafio.Core.Dominio.Base;
 using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace Desafio.Database.Repositorios.Base
 {
     public abstract class BaseRepositorio<T> : IBaseRepositorio<T> where T : BaseEntidade
     {
-        protected readonly DesafioContext _context;
+        protected readonly DesafioContext2 _context;
         public DbSet<T> _dbSet { get; set; }
 
-        public BaseRepositorio(DesafioContext context)
+        protected BaseRepositorio(DesafioContext2 context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
@@ -36,7 +37,7 @@ namespace Desafio.Database.Repositorios.Base
 
         public async virtual Task UpdateAsync(T obj)
         {
-            _dbSet.Update(obj);
+            _dbSet.AddOrUpdate(obj);
             await _context.SaveChangesAsync();
         }
 
