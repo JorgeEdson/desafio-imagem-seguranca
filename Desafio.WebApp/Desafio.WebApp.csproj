@@ -58,6 +58,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,7 +130,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\DesafioService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DispositivoController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dispositivo.cs" />
     <Compile Include="Evento.cs" />
@@ -141,6 +148,13 @@
     <Compile Include="WebAppContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\DesafioService\DesafioService.disco" />
+    <None Include="Connected Services\DesafioService\configuration91.svcinfo" />
+    <None Include="Connected Services\DesafioService\configuration.svcinfo" />
+    <None Include="Connected Services\DesafioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -166,6 +180,13 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\DesafioService\DesafioService.wsdl" />
+    <None Include="Connected Services\DesafioService\DesafioService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DesafioService\DesafioService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -193,9 +214,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dispositivo\Create.cshtml" />
     <Content Include="Views\Dispositivo\Delete.cshtml" />
-    <Content Include="Views\Dispositivo\Details.cshtml" />
     <Content Include="Views\Dispositivo\Edit.cshtml" />
     <Content Include="Views\Dispositivo\Index.cshtml" />
+    <Content Include="Views\Evento\Delete.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +249,12 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\DesafioService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -27,5 +27,9 @@ namespace Desafio.WebApp
             Dispositivo = dispositivo;
             TipoEvento = tipoEvento;
         }
+
+        public Evento()
+        {                
+        }
     }
 }

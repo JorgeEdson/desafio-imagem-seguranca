@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Desafio.WebApp.Evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Eventos acionados</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dispositivo.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoEvento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dispositivo.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoEvento)
+        </td>        
+    </tr>
+}
+
+</table>

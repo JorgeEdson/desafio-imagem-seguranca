@@ -1,13 +1,45 @@
 ﻿@model IEnumerable<Desafio.WebApp.Dispositivo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dispositivos";
 }
 
-<h2>Index</h2>
+<style>
+    .shared-button-style {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 10px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .shared-button-style:hover {
+            background-color: #eee;
+            border-color: #ccc;
+        }
+</style>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        alert('@TempData["AlertMessage"]');
+    </script>
+}
+
+
+<h2>Dispositivos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar novo dispositivo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,21 +51,48 @@
         </th>
         <th></th>
     </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                <div class="btn-group">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "shared-button-style" })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                    @using (Html.BeginForm("Delete", "Dispositivo", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="shared-button-style">Deletar</button>
+                    }
 
+                    @using (Html.BeginForm("AbrirFechar", "Dispositivo", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="endereco" value="@item.Endereco" />
+                        <button type="submit" class="shared-button-style">Abrir e Fechar</button>
+                    }
+
+                    @using (Html.BeginForm("ManterAberto", "Dispositivo", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="endereco" value="@item.Endereco" />
+                        <button type="submit" class="shared-button-style">Manter Aberto</button>
+                    }
+
+                    @using (Html.BeginForm("Fechar", "Dispositivo", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="endereco" value="@item.Endereco" />
+                        <button type="submit" class="shared-button-style">Fechar</button>
+                    }
+                </div>
+            </td>
+        </tr>
+    }
 </table>

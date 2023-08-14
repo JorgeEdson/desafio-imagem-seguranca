@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.WCF", "Desafio.WCF\Desafio.WCF.csproj", "{7FD0B188-FB16-4C34-A2C5-F042D962EFC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.WebApp", "Desafio.WebApp\Desafio.WebApp.csproj", "{21661C1E-7594-40D3-800B-DAFA991A2DFA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FD0B188-FB16-4C34-A2C5-F042D962EFC4} = {7FD0B188-FB16-4C34-A2C5-F042D962EFC4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

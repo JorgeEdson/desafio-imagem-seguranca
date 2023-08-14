@@ -14,13 +14,13 @@ namespace Desafio.WebApp.Controllers
     {
         private WebAppContext db = new WebAppContext();
 
-        // GET: Dispositivo
+        
         public ActionResult Index()
         {
             return View(db.Dispositivos.ToList());
         }
 
-        // GET: Dispositivo/Details/5
+        
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -35,15 +35,13 @@ namespace Desafio.WebApp.Controllers
             return View(dispositivo);
         }
 
-        // GET: Dispositivo/Create
+        
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Dispositivo/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Endereco")] Dispositivo dispositivo)
@@ -59,7 +57,7 @@ namespace Desafio.WebApp.Controllers
             return View(dispositivo);
         }
 
-        // GET: Dispositivo/Edit/5
+        
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -74,9 +72,7 @@ namespace Desafio.WebApp.Controllers
             return View(dispositivo);
         }
 
-        // POST: Dispositivo/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,Endereco")] Dispositivo dispositivo)
@@ -90,7 +86,7 @@ namespace Desafio.WebApp.Controllers
             return View(dispositivo);
         }
 
-        // GET: Dispositivo/Delete/5
+        
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -105,7 +101,7 @@ namespace Desafio.WebApp.Controllers
             return View(dispositivo);
         }
 
-        // POST: Dispositivo/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
@@ -116,13 +112,46 @@ namespace Desafio.WebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AbrirFechar(int endereco)
         {
-            if (disposing)
+            if (ModelState.IsValid)
             {
-                db.Dispose();
+                var service = new DesafioService.DesafioServiceClient();
+                var response = service.AbrirFechar(endereco);
+                TempData["AlertMessage"] = response;
+                return RedirectToAction("Index");
             }
-            base.Dispose(disposing);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManterAberto(int endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                var service = new DesafioService.DesafioServiceClient();
+                var response = service.ManterAberto(endereco);
+                TempData["AlertMessage"] = response;
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Fechar(int endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                var service = new DesafioService.DesafioServiceClient();
+                var response = service.Fechar(endereco);
+                TempData["AlertMessage"] = response;
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }
